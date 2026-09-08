@@ -13,7 +13,7 @@ namespace Services
             var assemblyFileName = "AssemblyLongFormName".GetValueFor();
             var className = "ClassName".GetValueFor();
 
-            Instance = new ObjectRecipesServices();
+            Instance = Activator.CreateInstance(assemblyFileName, className).Unwrap() as AbstractRecipesServices;
         }
 
         public static AbstractRecipesServices? Instance { get; set; }
