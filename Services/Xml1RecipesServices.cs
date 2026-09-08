@@ -10,7 +10,23 @@ namespace Services
     {
         public override List<Recipe> GetAll()
         {
-            // System.Xml
+            var xmlDoc = new System.Xml.XmlDocument();
+
+            xmlDoc.Load("recipes.xml");
+
+            var recipes = new List<Recipe>();
+
+            foreach (System.Xml.XmlNode recipeNode in xmlDoc.SelectNodes("/recipes/recipe"))
+            {
+                var recipe = new Recipe
+                {
+                    Id = Guid.Parse(recipeNode.Attributes["id"].Value),
+                    Title = recipeNode.Attributes["title"].Value
+                };
+                recipes.Add(recipe);
+            }
+
+            return recipes;
         }
     }
 }
