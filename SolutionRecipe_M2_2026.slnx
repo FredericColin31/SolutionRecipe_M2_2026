@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="DataContracts/DataContracts.csproj" />
+  <Project Path="IHM/IHM.csproj" />
+  <Project Path="Services/Services.csproj" />
+  <Project Path="ServicesContracts/ServicesContracts.csproj" />
+</Solution>
