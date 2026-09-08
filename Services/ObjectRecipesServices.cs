@@ -10,7 +10,12 @@ namespace Services
     {
         public override List<Recipe> GetAll()
         {
-            return null;
+            return new List<Recipe>
+            {
+                new Recipe { Id = Guid.NewGuid(), Title = "Object Recipe 1" },
+                new Recipe { Id = Guid.NewGuid(), Title = "Object Recipe 2" },
+                new Recipe { Id = Guid.NewGuid(), Title = "Object Recipe 3" }
+            };
         }
     }
 }
