@@ -1,4 +1,5 @@
-﻿using ServicesContracts;
+﻿using Services.Core;
+using ServicesContracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,9 @@ namespace Services
     {
         static Factory()
         {
+            var assemblyFileName = "AssemblyLongFormName".GetValueFor();
+            var className = "ClassName".GetValueFor();
+
             Instance = new ObjectRecipesServices();
         }
 
