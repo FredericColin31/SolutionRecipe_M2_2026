@@ -12,31 +12,7 @@ namespace Services
     {
         public override List<Recipe> GetAll()
         {
-            using (var connection = new SqlConnection("RecipesConnectionString".GetConnectionStringFor()))
-            {
-                connection.Open();
-
-                var command = connection.CreateCommand();
-                command.CommandText = "SELECT Id, Title FROM Recipes";
-                command.CommandType = System.Data.CommandType.Text;
-
-                var reader = command.ExecuteReader();
-                var recipes = new List<Recipe>();
-                while (reader.Read())
-                {
-                    var recipe = new Recipe
-                    {
-                        Id = Guid.Parse(reader["id"].ToString()),
-                        Title = reader["title"].ToString()
-                    };
-
-                    recipes.Add(recipe);
-                }
-
-                return recipes;
-            }
-
-
+            return this.GetAllRecipes("SELECT Id, Title FROM Recipes", System.Data.CommandType.Text);
         }
     }
 }
