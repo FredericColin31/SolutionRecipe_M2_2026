@@ -24,5 +24,13 @@ namespace Services.Core
 
             return Configuration?[$"appSettings:{key}"];
         }
+
+        public static String? GetConnectionStringFor(this String key)
+        {
+            if (String.IsNullOrEmpty(key))
+                return String.Empty;
+
+            return Configuration?[$"ConnectionStrings:{key}"];
+        }
     }
 }

@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Services
 {
-    public class Db01RecipesServices : AbstractRecipesServices
+    public class Db02RecipesServices : AbstractRecipesServices
     {
         public override List<Recipe> GetAll()
         {
@@ -17,8 +17,8 @@ namespace Services
                 connection.Open();
 
                 var command = connection.CreateCommand();
-                command.CommandText = "SELECT Id, Title FROM Recipes";
-                command.CommandType = System.Data.CommandType.Text;
+                command.CommandText = "sSelectRecipes";
+                command.CommandType = System.Data.CommandType.StoredProcedure;
 
                 var reader = command.ExecuteReader();
                 var recipes = new List<Recipe>();
