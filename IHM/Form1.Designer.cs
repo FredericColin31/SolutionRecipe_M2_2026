@@ -31,6 +31,7 @@
             button1 = new Button();
             dataGridView1 = new DataGridView();
             button2 = new Button();
+            TitleTb = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -65,11 +66,19 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // TitleTb
+            // 
+            TitleTb.Location = new Point(610, 82);
+            TitleTb.Name = "TitleTb";
+            TitleTb.Size = new Size(178, 27);
+            TitleTb.TabIndex = 3;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(TitleTb);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
@@ -77,6 +86,7 @@
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -84,5 +94,6 @@
         private Button button1;
         private DataGridView dataGridView1;
         private Button button2;
+        private TextBox TitleTb;
     }
 }

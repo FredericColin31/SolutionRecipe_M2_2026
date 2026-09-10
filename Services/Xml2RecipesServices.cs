@@ -18,5 +18,10 @@ namespace Services
 
             return xdoc.Descendants("recipe").Select(node => new Recipe() { Id = Guid.Parse(node.Attribute("id")?.Value ?? Guid.Empty.ToString()), Title = node.Attribute("title")?.Value ?? string.Empty }).ToList();
         }
+
+        public override List<Recipe> GetByTitle(string title)
+        {
+            return null;
+        }
     }
 }

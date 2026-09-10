@@ -42,5 +42,10 @@ namespace Services
                 }
             }
         }
+
+        public override List<Recipe> GetByTitle(string title)
+        {
+            return null;
+        }
     }
 }

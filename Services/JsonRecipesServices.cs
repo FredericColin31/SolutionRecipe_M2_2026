@@ -13,5 +13,10 @@ namespace Services
         {
             return JsonConvert.DeserializeObject<List<Recipe>>(File.ReadAllText("recipes.json"));
         }
+
+        public override List<Recipe> GetByTitle(string title)
+        {
+            return null;
+        }
     }
 }

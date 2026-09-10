@@ -15,5 +15,10 @@ namespace Services
                 return context.Recipes.Select(@recipe => new DataContracts.Recipe() { Id = @recipe.Id, Title = @recipe.Title }).ToList();
             }
         }
+
+        public override List<Recipe> GetByTitle(string title)
+        {
+            return null;
+        }
     }
 }

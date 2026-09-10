@@ -17,5 +17,10 @@ namespace Services
                 new Recipe { Id = Guid.NewGuid(), Title = "Object Recipe 3" }
             };
         }
+
+        public override List<Recipe> GetByTitle(string title)
+        {
+            return GetAll().Where(@recipe => recipe.Title.Contains(title, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
     }
 }

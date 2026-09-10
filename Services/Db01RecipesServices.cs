@@ -14,5 +14,10 @@ namespace Services
         {
             return this.GetAllRecipes("SELECT Id, Title FROM Recipes", System.Data.CommandType.Text);
         }
+
+        public override List<Recipe> GetByTitle(string title)
+        {
+            return null;
+        }
     }
 }

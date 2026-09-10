@@ -12,7 +12,14 @@ namespace IHM
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = Factory.Instance?.GetAll();
+            if (String.IsNullOrEmpty(TitleTb.Text))
+            {
+                dataGridView1.DataSource = Factory.Instance?.GetAll();
+            }
+            else
+            {
+                dataGridView1.DataSource = Factory.Instance?.GetByTitle(TitleTb.Text);
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

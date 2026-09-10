@@ -28,5 +28,10 @@ namespace Services
 
             return recipes;
         }
+
+        public override List<Recipe> GetByTitle(string title)
+        {
+            return null;
+        }
     }
 }
