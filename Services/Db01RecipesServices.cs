@@ -12,12 +12,12 @@ namespace Services
     {
         public override List<Recipe> GetAll()
         {
-            return this.GetAllRecipes("SELECT Id, Title FROM Recipes", System.Data.CommandType.Text);
+            return this.GetAllRecipes($"SELECT Id, Title FROM Recipes", System.Data.CommandType.Text);
         }
 
         public override List<Recipe> GetByTitle(string title)
         {
-            return null;
+            return this.GetAllRecipes($"SELECT Id, Title FROM Recipes WHERE Title LIKE '%{title}%'", System.Data.CommandType.Text);
         }
     }
 }

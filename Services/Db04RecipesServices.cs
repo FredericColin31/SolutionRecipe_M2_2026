@@ -1,4 +1,5 @@
 ﻿using DataContracts;
+using Microsoft.EntityFrameworkCore;
 using ServicesContracts;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,10 @@ namespace Services
 
         public override List<Recipe> GetByTitle(string title)
         {
-            return null;
+            using (var context = new DataAccessLayer.BRecipesContext())
+            {
+                return context.Recipes.Where(@recipe => @recipe.Title.Contains(title)).Select(@recipe => new DataContracts.Recipe() { Id = @recipe.Id, Title = @recipe.Title }).ToList();
+            }
         }
     }
 }

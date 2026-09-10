@@ -45,7 +45,35 @@ namespace Services
 
         public override List<Recipe> GetByTitle(string title)
         {
-            return null;
+            var invariantName = "System.Data.SqlClient";
+
+            DbProviderFactories.RegisterFactory(invariantName, System.Data.SqlClient.SqlClientFactory.Instance);
+
+            var factory = DbProviderFactories.GetFactory(invariantName);
+
+            using (var connection = factory.CreateConnection())
+            {
+                connection.ConnectionString = "RecipesConnectionString".GetConnectionStringFor();
+                connection.Open();
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = $"SELECT Id, Title FROM Recipes WHERE Title LIKE '%{title}%'";
+                    using (var reader = command.ExecuteReader())
+                    {
+                        var recipes = new List<Recipe>();
+                        while (reader.Read())
+                        {
+                            var recipe = new Recipe
+                            {
+                                Id = reader.GetGuid(0),
+                                Title = reader.GetString(1)
+                            };
+                            recipes.Add(recipe);
+                        }
+                        return recipes;
+                    }
+                }
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Services
 
         public override List<Recipe> GetByTitle(string title)
         {
-            return null;
+            return this.GetAllRecipes($"sSelectRecipes", System.Data.CommandType.StoredProcedure, title);
         }
     }
 }

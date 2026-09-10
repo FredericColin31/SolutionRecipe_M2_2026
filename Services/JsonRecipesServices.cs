@@ -16,7 +16,7 @@ namespace Services
 
         public override List<Recipe> GetByTitle(string title)
         {
-            return null;
+            return GetAll().Where(@recipe => recipe.Title.Contains(title, StringComparison.OrdinalIgnoreCase)).ToList();
         }
     }
 }

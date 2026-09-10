@@ -9,7 +9,7 @@ namespace Services.Core
 {
     public static class AbstractRecipesServicesExtensions
     {
-        public static List<DataContracts.Recipe> GetAllRecipes(this AbstractRecipesServices rs, String commandText, System.Data.CommandType commandType)
+        public static List<DataContracts.Recipe> GetAllRecipes(this AbstractRecipesServices rs, String commandText, System.Data.CommandType commandType, String? title = null)
         {
             using (var connection = new SqlConnection("RecipesConnectionString".GetConnectionStringFor()))
             {
@@ -18,6 +18,11 @@ namespace Services.Core
                 var command = connection.CreateCommand();
                 command.CommandText = commandText;
                 command.CommandType = commandType;
+
+                if (title != null)
+                {
+                    command.Parameters.AddWithValue("@title", title);
+                }
 
                 var reader = command.ExecuteReader();
                 var recipes = new List<Recipe>();
